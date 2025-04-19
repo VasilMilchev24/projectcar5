@@ -1,9 +1,9 @@
 import React from 'react';
 // components/SideScrollBar.tsx
-import { TRENDING_MOVIES } from "../utils/movies";
+import { TRENDING_MOVIES } from "../../../utils/movies_tredning_now";
 import { MovieCard } from "./MovieCard";
 
-export const SideScrollBar = () => {
+export const TrendingNowBar = () => {
   return (
     <section className="mt-6 px-4">
       <h2 className="text-2xl font-bold text-white mb-4">Trending now</h2>
@@ -17,4 +17,4 @@ export const SideScrollBar = () => {
   );
 };
 
-export default SideScrollBar;
+export default TrendingNowBar;
