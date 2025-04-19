@@ -10,7 +10,8 @@ export interface Movie {
   cast?: string[]; // Array of actor names
 }
   
-// Tezi nesta mislq che trqbva da se wzimat ot baza danni no za da napravq strukturata sum gi hardcodnal
+//Since I am doing the fron-end part mostly, 
+// at the moment this is hardcoded data, but in the future it will be fetched from a database
   export const TRENDING_MOVIES: Movie[] = [
     { id: 1, title: 'The Fast and the Furious', year: '2001',
       imageUrl: "https://i.ibb.co/Df3X32fV/Fast_One_Poster.webp", genre: 'Action',  
@@ -25,7 +26,7 @@ export interface Movie {
       trailerUrl:"https://www.youtube.com/watch?v=G4hVWe4GOrk",
       cast: ["Nicolas Cage", "Stephen Dorff", "Heather Graham", "Danny Trejo", "Michael Madsen"]},
 
-    { id: 3, title: 'Warfare', year: '2025', imageUrl: "https://i.ibb.co/nNK1XV0q/Warfare.webp", genre: 'Military',  
+    { id: 3, title: 'Warfare', year: '2025', imageUrl: "https://i.ibb.co/nNK1XV0q/Warfare.webp", genre: 'Action',  
       duration: '1h 35m', description:"In the war-torn streets of Ramadi, 2006, a Navy SEAL platoon occupies an Iraqi family's home, transforming it into a surveillance post amid escalating insurgent threats. As tensions rise, the soldiers face an intense ambush, leading to a harrowing battle that tests their limits and bonds. Directed by Ray Mendoza and Alex Garland, this real-time depiction draws from Mendoza's own experiences, offering an unflinching look at the chaos and camaraderie of modern warfare. ",
       trailerUrl:"https://www.youtube.com/watch?v=JER0Fkyy3tw",
       cast: ["Ray Mendoza", "Alex Garland", "Michael Peña", "John Cena", "Jessica Chastain"]},
