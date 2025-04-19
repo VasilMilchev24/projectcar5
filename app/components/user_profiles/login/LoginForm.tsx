@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   async function handleGoogleLogin() {
     "use server";
-    await signIn('google', { redirectTo: "/main_page" });
+    await signIn('google', { callbackUrl: "/main_page" });
   }
 
   return (

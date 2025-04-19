@@ -1,17 +1,22 @@
 import React from "react";
-import SearchBar from "../components/SearchBar";
-import SideScrollBar from "../components/SideScrollBar";
 
+import { MovieCategorySection } from '../components/main_page/MovieCategorySection';
+import { TRENDING_MOVIES} from '../utils/movieData';
+import SearchBar from '@/app/components/welcome_page/searchbar/SearchBar';
 
 const Home:React.FC =()=> {
   return (
     <main className="bg-gray-900 min-h-screen">
       <div className="pt-16 bg-gray-900"> {/* Added padding for navbar */}
         <SearchBar />
-        <SideScrollBar />        
+        <MovieCategorySection
+        title="Trending Now"
+        movies={TRENDING_MOVIES}
+      />      
       </div>
     </main>
   )
 };
 
 export default Home;
+
