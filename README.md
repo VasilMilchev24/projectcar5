@@ -1,17 +1,17 @@
 **Welcome to FlickFair**
 
-We are passionate to introduce you our university project "FlickFair", a streaming movies website. 
+We are passionate to introduce to you our university project, "FlickFair" — a movie streaming website.
 
 **Features:**
-- Modern looking design, inspired from the best competitors in the market.
-- Easy and intuitive navigation.
-- Watch movies using our streaming options, no need for download.
-- Create your personilized profile.
-- Affordable price
+- **Modern design**, inspired by top competitors in the market.
+- **Easy and intuitive navigation** for a seamless user experience.
+- **Stream movies instantly** — **no downloads** required.
+- Create your **personalized profile** to keep track of your favorites.
+- **Affordable pricing** to fit any budget.
 - More to come..
 
 Technologies used :
-**"Notice:"** - The project is split into 2 parts 
+**"Notice:"** - The project is divided into 2 parts.
 
 **Front-End** - Vasil Milchev
 - React with Next.js, Typescript, Tailwind CSS, ESLint
@@ -24,8 +24,8 @@ Technologies used :
 **To Do for Front-End**
 - Creating reusable template for movie page:
 •	Main things to consider: 
-  1.	Making the page reusable component by loading the specific movie data, images and video called by an ID
-  2.	Making the design modern looking, but easy to use.
+  1.	We should make the page a reusable component by loading specific movie data, images, and videos based on a unique ID.
+  2.	Designing a modern, yet user-friendly interface.
 - Making FQA page
 - Making Contacts page
 
