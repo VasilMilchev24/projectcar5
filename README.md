@@ -1,4 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**Welcome to FlickFair**
+
+We are passionate to introduce to you our university project, "FlickFair" — a movie streaming website.
+
+**Features:**
+- **Modern design**, inspired by top competitors in the market.
+- **Easy and intuitive navigation** for a seamless user experience.
+- **Stream movies instantly** — **no downloads** required.
+- Create your **personalized profile** to keep track of your favorites.
+- **Affordable pricing** to fit any budget.
+- More to come..
+
+Technologies used :
+**"Notice:"** - The project is divided into 2 parts.
+
+**Front-End** - Vasil Milchev
+- React with Next.js, Typescript, Tailwind CSS, ESLint
+
+**Latest Update for Front-End:**
+- Finished the design of: Welcome Page, Login Page, Registration Page and Main Page.
+- Code optimization: Utilizing reusable components.
+- Fixing project structure: Organizing components and app routes.
+
+**To Do for Front-End**
+- Creating reusable template for movie page:
+•	Main things to consider: 
+  1.	We should make the page a reusable component by loading specific movie data, images, and videos based on a unique ID.
+  2.	Designing a modern, yet user-friendly interface.
+- Making FQA page
+- Making Contacts page
+
+
+**Back-End** - Kaloyan Dimitrov
+- Node.js, SQL Server
+
+
+
+
+
+
+
+NOTE: This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
@@ -13,24 +54,3 @@ pnpm dev
 # or
 bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
