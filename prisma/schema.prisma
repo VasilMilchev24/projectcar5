@@ -25,3 +25,57 @@ model User {
 
   @@map("USERS")
 }
+
+model MediaTypes {
+  ID        Int         @default(autoincrement())
+  NAME      String      @db.VarChar(64)
+  MEDIA     Media[]
+
+  @@id(   [ID]              , map: "PK_MEDIA_TYPES_ID"             )
+
+  @@map("MEDIA_TYPES")
+}
+
+model Genres {
+  ID        Int         @default(autoincrement())
+  NAME      String      @db.VarChar(64)
+  MEDIA     Media[]
+
+  @@id(   [ID]              , map: "PK_GENRES_ID"             )
+
+  @@map("GENRES")
+}
+
+model Countries {
+  ID        Int         @default(autoincrement())
+  NAME      String      @db.VarChar(128)
+  MEDIA     Media[]
+
+  @@id(   [ID]              , map: "PK_COUNTRIES_ID"             )
+
+  @@map("COUNTRIES")
+}
+
+model Media {
+  ID                  Int               @default(autoincrement())
+  NAME                String            @db.VarChar(128)
+  DESCRIPTION         String            @db.VarChar(2048)
+  MEDIA_TYPE_ID       Int 
+  MEDIA_TYPE          MediaTypes        @relation(fields: [MEDIA_TYPE_ID], references: [ID], map: "FK_MEDIA_MEDIA_TYPE_ID")
+  RELEASE_DATE        DateTime          @db.DateTime
+  DIRECTOR_NAME       String            @db.VarChar(256)
+  GENRE_ID            Int
+  GENRE               Genres            @relation(fields: [GENRE_ID], references: [ID], map: "FK_MEDIA_GENRE_ID")
+  DURATION            Int
+  COUNTRY_ID          Int
+  COUNTRY             Countries         @relation(fields: [COUNTRY_ID], references: [ID], map: "FK_MEDIA_COUNTRY_ID")
+  RATING              Float
+  VIEWS               Int
+  THUMBNAIL_URL       String            @db.VarChar(512)
+  TRAILER_URL         String            @db.VarChar(512)
+  IS_TRENDING_NOW     Boolean           @db.Bit
+
+  @@id(     [ID]              , map: "PK_MEDIA_ID"             )
+
+  @@map("MEDIA")
+}

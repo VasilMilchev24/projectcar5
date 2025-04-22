@@ -1,12 +1,19 @@
+
+"use client"
+
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import {auth, signOut,signIn} from '@/auth';
+import { useOurSignOut } from "./hooks";
+import { useSession } from "@/app/lib/session/SessionContext";
 
+const Navbar = () => {
 
+  const { session, loading } = useSession();
+  const { handleSignOut } = useOurSignOut();
 
-const Navbar = async() => {
-    const session = await auth ();
+  if (loading) return null;
+
   return (
     <header className="px-5 py-3 bg-gray-900 shadow-sm font-work-sans">
         <nav className="flex justify-between items-center">
@@ -17,18 +24,13 @@ const Navbar = async() => {
         <div className="flex items-center gap-10 text-black font-semibold">
             {session && session?.user?(
                 <>
-                  
 
-                    <form action={async()=>{
-                        "use server";
-                        
-                        await signOut({redirectTo:"/"});
-                    }}>
-                    <button type="submit"
-                    className=" text-white px-4 py-2 hover:text-primary transition-colors">
-                        <span>Sign Out</span>
+                    <button
+                        onClick={handleSignOut}
+                        className="text-white px-4 py-2 hover:text-primary transition-colors"
+                        >
+                        Sign Out
                     </button>
-                    </form>
 
                     <Link href={`/user/${session?.id}`}
                      className=" text-white px-4 py-2 hover:text-primary transition-colors">

@@ -1,19 +1,16 @@
+
+"use client"
+
 import Link from "next/link";
-import { signIn } from "@/auth";
-import { redirect } from "next/navigation";
+import { useState } from "react";
+import { useLogin } from "./hooks";
 
 export default function LoginPage() {
-  async function handleLogin(formData: FormData) {
-    "use server";
-    // Backend logic for email/password login
-    //If login is successful, redirect to the home page
-    redirect("/main_page");
-  }
 
-  async function handleGoogleLogin() {
-    "use server";
-    await signIn('google', { callbackUrl: "/main_page" });
-  }
+  const { handleLogin, handleGoogleLogin, loading, error } = useLogin();
+  
+  const [email, setEmail]         = useState("");
+  const [password, setPassword]   = useState("");
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
@@ -53,20 +50,22 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <form className="space-y-6" action={handleLogin}>
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="identifier" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
                   Email or Username
                 </label>
                 <input
-                  id="identifier"
-                  name="identifier"
+                  id="email"
+                  name="email"
                   type="text"
                   autoComplete="username"
                   required
                   className="appearance-none rounded relative block w-full px-3 py-2.5 border border-gray-600 bg-gray-700 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                   placeholder="Enter your email or username"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
@@ -82,6 +81,8 @@ export default function LoginPage() {
                   required
                   className="appearance-none rounded relative block w-full px-3 py-2.5 border border-gray-600 bg-gray-700 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -112,10 +113,18 @@ export default function LoginPage() {
             <div>
               <button
                 type="submit"
+                disabled={loading}
                 className="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
               >
-                Log in
+                {loading ? "Logging in..." : "Log in"}
               </button>
+              {error && (
+                <div className="mt-4 flex justify-center">
+                  <p className="text-red-400 text-sm bg-red-950 border border-red-700 rounded-md px-4 py-2 shadow-md text-center max-w-xs">
+                    {error}
+                  </p>
+                </div>
+              )}
             </div>
           </form>
         </div>

@@ -1,19 +1,17 @@
+
+"use client"
+
 import Link from "next/link";
-import { signIn } from "@/auth";
-import { redirect } from "next/navigation";
+import { useState } from "react";
+import { useRegister } from "./hooks";
 
 export default function RegisterPage() {
-  async function handleRegistration(formData: FormData) {
-    "use server";
-    // Backend logic for email/password registration
-    //If registration is successful, redirect to the home page
-    redirect("/main_page");
-  }
+  
+  const { handleRegister, handleGoogleSignUp, loading, error } = useRegister();
 
-  async function handleGoogleSignUp() {
-    "use server";
-    await signIn('google', { callbackUrl: "/main_page" });
-  }
+  const [username, setUsername]   = useState("");
+  const [email, setEmail]         = useState("");
+  const [password, setPassword]   = useState("");
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
@@ -53,7 +51,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <form className="space-y-6" action={handleRegistration}>
+          <form className="space-y-6" onSubmit={handleRegister}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="username" className="block text-sm font-medium text-gray-300 mb-1">
@@ -66,6 +64,8 @@ export default function RegisterPage() {
                   required
                   className="appearance-none rounded relative block w-full px-3 py-2.5 border border-gray-600 bg-gray-700 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                   placeholder="Enter your username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
 
@@ -81,6 +81,8 @@ export default function RegisterPage() {
                   required
                   className="appearance-none rounded relative block w-full px-3 py-2.5 border border-gray-600 bg-gray-700 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
@@ -96,6 +98,8 @@ export default function RegisterPage() {
                   required
                   className="appearance-none rounded relative block w-full px-3 py-2.5 border border-gray-600 bg-gray-700 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                   placeholder="Create a password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 
@@ -131,10 +135,18 @@ export default function RegisterPage() {
             <div>
               <button
                 type="submit"
+                disabled={loading}
                 className="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
               >
-                Register
+                {loading ? "Registering..." : "Register"}
               </button>
+              {error && (
+                <div className="mt-4 flex justify-center">
+                  <p className="text-red-400 text-sm bg-red-950 border border-red-700 rounded-md px-4 py-2 shadow-md text-center max-w-xs">
+                    {error}
+                  </p>
+                </div>
+              )}
             </div>
           </form>
         </div>
