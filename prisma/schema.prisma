@@ -46,14 +46,25 @@ model Genres {
   @@map("GENRES")
 }
 
-model Countries {
-  ID        Int         @default(autoincrement())
-  NAME      String      @db.VarChar(128)
-  MEDIA     Media[]
+// model Countries {
+//   ID        Int         @default(autoincrement())
+//   NAME      String      @db.VarChar(128)
+//   MEDIA     Media[]
 
-  @@id(   [ID]              , map: "PK_COUNTRIES_ID"             )
+//   @@id(   [ID]              , map: "PK_COUNTRIES_ID"             )
 
-  @@map("COUNTRIES")
+//   @@map("COUNTRIES")
+// }
+
+model Actors {
+  ID                  Int               @default(autoincrement())
+  NAME                String            @db.VarChar(128)
+  MEDIA_ID            Int 
+  MEDIA               Media             @relation(fields: [MEDIA_ID], references: [ID], map: "FK_MEDIA_ID")
+
+  @@id(     [ID]              , map: "PK_ACTORS_ID"             )
+
+  @@map("ACTORS")
 }
 
 model Media {
@@ -62,15 +73,16 @@ model Media {
   DESCRIPTION         String            @db.VarChar(2048)
   MEDIA_TYPE_ID       Int 
   MEDIA_TYPE          MediaTypes        @relation(fields: [MEDIA_TYPE_ID], references: [ID], map: "FK_MEDIA_MEDIA_TYPE_ID")
-  RELEASE_DATE        DateTime          @db.DateTime
-  DIRECTOR_NAME       String            @db.VarChar(256)
+  RELEASE_YEAR        Int               @db.Int
+  //DIRECTOR_NAME       String            @db.VarChar(256)
   GENRE_ID            Int
   GENRE               Genres            @relation(fields: [GENRE_ID], references: [ID], map: "FK_MEDIA_GENRE_ID")
+  ACTORS              Actors[]
   DURATION            Int
-  COUNTRY_ID          Int
-  COUNTRY             Countries         @relation(fields: [COUNTRY_ID], references: [ID], map: "FK_MEDIA_COUNTRY_ID")
-  RATING              Float
-  VIEWS               Int
+  //COUNTRY_ID          Int
+  //COUNTRY             Countries         @relation(fields: [COUNTRY_ID], references: [ID], map: "FK_MEDIA_COUNTRY_ID")
+  //RATING              Float
+  //VIEWS               Int
   THUMBNAIL_URL       String            @db.VarChar(512)
   TRAILER_URL         String            @db.VarChar(512)
   IS_TRENDING_NOW     Boolean           @db.Bit

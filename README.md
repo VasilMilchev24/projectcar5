@@ -31,11 +31,15 @@ Technologies used :
 
 
 **Back-End** - Kaloyan Dimitrov
-- Node.js, SQL Server
-
-
-
-
+Next.js, Typescript, Prisma SQL Server
+Finished features on the back-end:
+  1. API requests:
+     - registration API request + password hashing
+     - authentication API request + JWT token
+     - API request for loading all media
+  2. Front-end hooks for API request
+  3. Created session context for internal and google sessions. Can be accessed in all pages and components.
+  4. Configured Prisma for instant database creation, schema creation and initialization with data
 
 
 
