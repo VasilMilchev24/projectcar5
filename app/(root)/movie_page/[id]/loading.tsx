@@ -1,5 +1,4 @@
-// app/(root)/movie_page/[id]/loading.tsx
-// a loading skeleton while the movie data is being fetched
+// app/movie_page/[id]/loading.tsx
 export default function Loading() {
     return (
         <div className="animate-pulse container mx-auto px-4 py-8">

@@ -1,4 +1,3 @@
-// app/components/MoviePage/MovieHeader.tsx
 interface Props {
     title: string;
     releaseYear: number;

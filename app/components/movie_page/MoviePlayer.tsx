@@ -1,6 +1,4 @@
-// components/movie_page/MoviePlayer.tsx
 'use client';
-
 import { useEffect, useRef } from 'react';
 
 interface Props {
@@ -25,7 +23,7 @@ export default function MoviePlayer({ url }: Props) {
     }, []);
 
     return (
-        <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-xl relative group">
+        <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-xl relative group mb-6">
             <video
                 ref={videoRef}
                 controls
@@ -35,7 +33,6 @@ export default function MoviePlayer({ url }: Props) {
             >
                 <track kind="captions" srcLang="en" label="English" />
             </video>
-
             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
         </div>
     );
