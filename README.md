@@ -20,12 +20,10 @@ Technologies used :
 - Finished the design of: Welcome Page, Login Page, Registration Page and Main Page.
 - Code optimization: Utilizing reusable components.
 - Fixing project structure: Organizing components and app routes.
+- Created reusable template for movie page:
 
 **To Do for Front-End**
-- Creating reusable template for movie page:
-•	Main things to consider: 
-  1.	We should make the page a reusable component by loading specific movie data, images, and videos based on a unique ID.
-  2.	Designing a modern, yet user-friendly interface.
+- Hosting the movies and making the video player in movie_page to work
 - Making FQA page
 - Making Contacts page
 
@@ -46,8 +44,11 @@ Finished features on the back-end:
 NOTE: This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+First run
 
-First, run the development server:
+npm install
+
+Second, run the development server:
 
 ```bash
 npm run dev
