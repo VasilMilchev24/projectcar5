@@ -61,10 +61,12 @@ async function createMedia(mediaType, genre, media)
           MEDIA_TYPE_ID:    mediaType.ID,
           GENRE_ID:         genre.ID,
           RELEASE_YEAR:     media.RELEASE_YEAR,
+          RATING:           media.RATING,
           DURATION:         media.DURATION,
           THUMBNAIL_URL:    media.THUMBNAIL_URL,
           TRAILER_URL:      media.TRAILER_URL,
-          IS_TRENDING_NOW:  true,
+          HOST_URL:         media.HOST_URL,
+          IS_TRENDING_NOW:  media.IS_TRENDING_NOW,
         },
       });
 

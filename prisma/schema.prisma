@@ -81,10 +81,11 @@ model Media {
   DURATION            Int
   //COUNTRY_ID          Int
   //COUNTRY             Countries         @relation(fields: [COUNTRY_ID], references: [ID], map: "FK_MEDIA_COUNTRY_ID")
-  //RATING              Float
+  RATING              Float             
   //VIEWS               Int
   THUMBNAIL_URL       String            @db.VarChar(512)
   TRAILER_URL         String            @db.VarChar(512)
+  HOST_URL            String            @db.VarChar(512)
   IS_TRENDING_NOW     Boolean           @db.Bit
 
   @@id(     [ID]              , map: "PK_MEDIA_ID"             )

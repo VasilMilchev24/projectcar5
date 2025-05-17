@@ -2,7 +2,7 @@
 "use client"
 
 import { MovieCategorySection } from '../../components/main_page/MovieCategorySection';
-import { TRENDING_MOVIES, TOP_ACTION_MOVIES, TOP_ADVENTURE_MOVIES, TOP_COMEDY_MOVIES, TOP_SCI_FI_MOVIES } from '../../utils/movieData';
+//import { TRENDING_MOVIES, TOP_ACTION_MOVIES, TOP_ADVENTURE_MOVIES, TOP_COMEDY_MOVIES, TOP_SCI_FI_MOVIES } from '../../utils/movieData';
 import SearchBar from '@/app/components/welcome_page/searchbar/SearchBar';
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -43,25 +43,25 @@ export default function MainPage() {
       
       <MovieCategorySection
         title="Top Action Movies"
-        movies={TOP_ACTION_MOVIES}
+        movies={media.filter((movie) => movie.genre === 'Action').sort((a, b) => b.rating - a.rating).slice(0, 10)}
         variant="compact"
       />
 
       <MovieCategorySection
-        title="Top Action Movies"
-        movies={TOP_ADVENTURE_MOVIES}
+        title="Top Adventure Movies"
+        movies={media.filter((movie) => movie.genre === 'Adventure').sort((a, b) => b.rating - a.rating).slice(0, 10)}
         variant="compact"
       />
 
       <MovieCategorySection
-        title="Top Action Movies"
-        movies={TOP_COMEDY_MOVIES}
+        title="Top Comedy Movies"
+        movies={media.filter((movie) => movie.genre === 'Comedy').sort((a, b) => b.rating - a.rating).slice(0, 10)}
         variant="compact"
       />
 
       <MovieCategorySection
-        title="Top Action Movies"
-        movies={TOP_SCI_FI_MOVIES}
+        title="Top Fantasy Movies"
+        movies={media.filter((movie) => movie.genre === 'Fantasy').sort((a, b) => b.rating - a.rating).slice(0, 10)}
         variant="compact"
       />
     </div>

@@ -2,9 +2,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import YouTube from 'react-youtube';
 import { Movie } from '../../utils/movieData/types';
 import { X } from "lucide-react";
+import { useSession } from "@/app/lib/session/SessionContext";
 
 interface MovieModalProps {
   movie: Movie;
@@ -19,6 +21,9 @@ const getYouTubeId = (url: string): string | null => {
 };
 
 export const MovieModal = ({ movie, isOpen, onClose }: MovieModalProps) => {
+
+  const { session, loading } = useSession();
+  const router = useRouter();
   const [videoId, setVideoId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -28,7 +33,15 @@ export const MovieModal = ({ movie, isOpen, onClose }: MovieModalProps) => {
     }
   }, [movie]);
 
-  if (!isOpen) return null;
+  const handleWatchFullMovie = () => {
+
+    if(!session?.isLoggedIn)
+      router.push(`/login`);
+    else
+      router.push(`/movie_page/${movie.id}`);
+  };
+
+  if (!isOpen || loading) return null;
 
   return (
     <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
@@ -110,7 +123,7 @@ export const MovieModal = ({ movie, isOpen, onClose }: MovieModalProps) => {
               {/* Action Buttons */}
               <div className="space-y-3 mt-4">
                 <button
-                  onClick={() => console.log('Watch full movie:', movie.id)}
+                  onClick={handleWatchFullMovie}
                   className="w-full py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium"
                 >
                   Watch Full Movie

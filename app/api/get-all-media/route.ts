@@ -19,9 +19,11 @@ export async function GET(req: NextRequest) {
       year              : item.RELEASE_YEAR.toString(),
       imageUrl          : item.THUMBNAIL_URL,
       genre             : item.GENRE?.NAME ?? 'Unknown',
+      rating            : item.RATING,
       duration          : `${Math.floor(item.DURATION / 60)}h ${item.DURATION % 60}m`,
       description       : item.DESCRIPTION,
       trailerUrl        : item.TRAILER_URL,
+      hostUrl           : item.HOST_URL,
       cast              : item.ACTORS.map(actor => actor.NAME),
       is_trending_now   : item.IS_TRENDING_NOW
     }));

@@ -1,8 +1,8 @@
 // app/movie_page/[id]/page.tsx
-import { prisma } from '@/lib/prisma';
-import MoviePlayer from '@/components/movie_page/MoviePlayer';
-import MovieDetails from '@/components/movie_page/MovieDetails';
-import MovieHeader from '@/components/movie_page/MovieHeader';
+import { prisma } from '@/app/lib/prisma';
+import MoviePlayer from '@/app/components/movie_page/MoviePlayer';
+import MovieDetails from '@/app/components/movie_page/MovieDetails';
+import MovieHeader from '@/app/components/movie_page/MovieHeader';
 
 interface PageProps {
     params: {
@@ -11,8 +11,9 @@ interface PageProps {
 }
 
 export default async function MoviePage({ params }: PageProps) {
+    const { id } = await params;
     // Convert string ID to number for database query
-    const numericId = Number(params.id);
+    const numericId = Number(id);
 
     // Fetch movie with relations
     const movie = await prisma.media.findUnique({
